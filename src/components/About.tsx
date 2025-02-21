@@ -12,10 +12,17 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-              I'm a passionate software developer specializing in backend development, API design, and full-stack applications. With a strong foundation in cybersecurity and AI, I create secure and scalable solutions that make a difference.
+            A software developer with expertise in Python, Java, C#, PHP, and 
+modern web technologies like HTML, CSS, JavaScript, and ReactJS. 
+Experienced in backend development, API creation, database 
+management, and cybersecurity. 
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              My journey in tech has led me through various exciting projects, from building intelligent chatbots to developing robust APIs. I'm constantly learning and exploring new technologies to stay at the forefront of innovation.
+            Passionate about building scalable 
+applications and solving real-world problems through efficient coding 
+and system design. Proven track record in hackathons, demonstrating 
+the ability to work under pressure, collaborate effectively, and deliver 
+innovative solutions.
             </p>
           </div>
 

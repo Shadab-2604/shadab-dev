@@ -1,32 +1,45 @@
-import React, { useState } from 'react';
-import { Moon, Sun, Menu, X, Github, Linkedin, Instagram, ExternalLink } from 'lucide-react';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Contact from './components/Contact';
+import React, { useState, useEffect } from "react";
+import { Moon, Sun, Menu, X, Github, Linkedin, Instagram } from "lucide-react";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Projects from "./components/Projects";
+import Skills from "./components/Skills";
+import Experience from "./components/Experience";
+import Contact from "./components/Contact";
 
-function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const App: React.FC = () => {
+  // Check localStorage for theme preference, default to dark mode
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    return localStorage.getItem("theme") === "dark" || !localStorage.getItem("theme");
+  });
+
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle('dark');
+    setDarkMode((prev) => !prev);
   };
 
-  const navItems = ['About', 'Projects', 'Skills', 'Experience', 'Contact'];
+  const navItems: string[] = ["About", "Projects", "Skills", "Experience", "Contact"];
 
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen ${darkMode ? "dark bg-gray-900" : "bg-gray-50"}`}>
       {/* Navigation */}
       <nav className="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 py-4">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <a href="#" className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
             Shadab.dev
           </a>
-          
+
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <a
@@ -53,7 +66,7 @@ function App() {
               {darkMode ? <Sun className="w-5 h-5 text-gray-300" /> : <Moon className="w-5 h-5 text-gray-600" />}
             </button>
             <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={() => setIsMenuOpen((prev) => !prev)}
               className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             >
               {isMenuOpen ? (
@@ -127,6 +140,6 @@ function App() {
       </footer>
     </div>
   );
-}
+};
 
 export default App;
