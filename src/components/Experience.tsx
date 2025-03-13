@@ -13,17 +13,7 @@ const experiences = [
       "Collaborated with cross-functional teams" // New achievement
     ]
   },
-  {
-    title: "Hackathon Winner",
-    company: "Tech Innovate 2023",
-    period: "March 2023", // New entry (not in resume)
-    description: "Led a team to victory in a 48-hour hackathon focused on creating innovative solutions for real-world problems.",
-    achievements: [
-      "Built a full-stack application in 48 hours",
-      "Implemented real-time features",
-      "Won first place among 50+ teams"
-    ]
-  },
+
   {
     title: "Alegria Web-weaving Hackathon (1st Rank)",
     company: "Alegria",
