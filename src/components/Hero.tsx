@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download, Database, Server, Cloud } from 'lucide-react';
 
 interface HeroProps {
   darkMode: boolean;
@@ -7,8 +7,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ darkMode }) => {
   const handleDownloadCV = () => {
-    // Replace 'cv.pdf' with the actual file path
-    const cvUrl = "/ShaikhShadab.pdf";  
+    const cvUrl = "/ShaikhShadab.pdf";
     const link = document.createElement("a");
     link.href = cvUrl;
     link.download = "Shadab_CV.pdf";
@@ -18,7 +17,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
   };
 
   return (
-    <section className="relative h-screen flex items-center">
+    <section className="relative h-screen flex items-center overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 -z-10 opacity-30 dark:opacity-20">
         <div
@@ -29,7 +28,32 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
         />
       </div>
 
-      <div className="container mx-auto px-4">
+      {/* Floating Tech Elements */}
+      <div className="absolute inset-0 pointer-events-none">
+        <Database
+          className="absolute top-1/4 left-10 w-16 h-16 text-gray-400 dark:text-gray-600 opacity-30 animate-float"
+          strokeWidth={1}
+        />
+        <Server
+          className="absolute top-1/3 right-20 w-20 h-20 text-indigo-400 dark:text-indigo-600 opacity-20 animate-float delay-200"
+          strokeWidth={1}
+        />
+        <Cloud
+          className="absolute bottom-20 left-1/4 w-24 h-24 text-sky-400 dark:text-sky-600 opacity-25 animate-float delay-300"
+          strokeWidth={1}
+        />
+
+        {/* Binary Code Animation */}
+        <div className="absolute top-40 right-10 opacity-10 dark:opacity-5 text-2xl font-mono whitespace-nowrap animate-scroll">
+          01101000 01101001 00100000 01001001 00100111 01101101 00100000 01010011 01101000 01100001 01100100 01100001 01100010
+        </div>
+
+        {/* Gradient Blobs */}
+        <div className="absolute -top-20 -right-20 w-96 h-96 bg-radial-gradient from-indigo-400 to-transparent rounded-full filter blur-3xl opacity-10 dark:opacity-5" />
+        <div className="absolute -bottom-40 left-0 w-80 h-80 bg-radial-gradient from-sky-300 to-transparent rounded-full filter blur-3xl opacity-10 dark:opacity-5" />
+      </div>
+
+      <div className="container mx-auto px-4 relative">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
             Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">Shadab</span>
@@ -62,6 +86,13 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
               <Download className="ml-2 w-5 h-5" />
             </button>
           </div>
+        </div>
+      </div>
+
+      {/* Scrolling Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-8 h-14 rounded-3xl border-2 border-gray-400 dark:border-gray-600 flex items-center justify-start p-1">
+          <div className="w-3 h-3 bg-gray-400 dark:bg-gray-600 rounded-full animate-scroll-wheel" />
         </div>
       </div>
     </section>

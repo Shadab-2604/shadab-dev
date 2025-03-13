@@ -16,7 +16,6 @@ const skillCategories = [
     skills: [
       { name: 'Node.js', icon: 'nodejs.svg' },
       { name: 'Express.js', icon: 'express.svg' },
-      { name: 'React', icon: 'react.svg' },
       { name: 'Pandas', icon: 'pandas.svg' }
     ]
   },
@@ -25,17 +24,14 @@ const skillCategories = [
     skills: [
       { name: 'Git', icon: 'git.svg' },
       { name: 'MongoDB', icon: 'mongodb.svg' },
-      { name: 'Redis', icon: 'redis.svg' },
-      { name: 'Docker', icon: 'docker.svg' }
+      { name: 'MySQL', icon: 'docker.svg' },
+      { name: 'PL/SQL', icon: 'docker.svg' }
     ]
   },
   {
     title: 'Other Skills',
     skills: [
-      { name: 'API Design', icon: 'api.svg' },
-      { name: 'Cybersecurity', icon: 'security.svg' },
-      { name: 'AI/ML', icon: 'ai.svg' },
-      { name: 'System Design', icon: 'system.svg' }
+      { name: 'API Design', icon: 'api.svg' }
     ]
   }
 ];

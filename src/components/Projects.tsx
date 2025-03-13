@@ -3,54 +3,31 @@ import { Github, ExternalLink } from 'lucide-react';
 
 const projects = [
   {
-    title: 'Build Folio',
-    description: 'An intelligent E-learning chatbot that helps students and professionals build their portfolios.',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800',
-    tech: ['Python', 'AI/ML', 'Natural Language Processing'],
-    github: '#',
-    demo: '#'
+    title: 'AI Content Summarizer',
+    description: 'A tool that shortens lengthy content into key points, quick, simple, and efficient!',
+    image: 'summarizer.png',
+    tech: ['Python', 'HTML/CSS', 'Gemini-API'],
+    github: 'https://github.com/Shadab-2604/Summarizer',
+    demo: 'https://summarizer-brown.vercel.app/'
   },
   {
     title: 'Weather API',
-    description: 'High-performance weather API with Redis caching for optimal response times.',
-    image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?auto=format&fit=crop&q=80&w=800',
-    tech: ['Node.js', 'Redis', 'Express.js'],
-    github: '#',
-    demo: '#'
-  },
-  {
-    title: 'Blogging Platform API',
-    description: 'Full-featured blogging platform backend with authentication and content management.',
-    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&q=80&w=800',
+    description: 'A custom weather API integrating with a third party service and implementing caching for performance.',
+    image: 'weather.jpg',
     tech: ['Node.js', 'MongoDB', 'Express.js'],
-    github: '#',
-    demo: '#'
+    github: 'https://github.com/Shadab-2604/Backend-PR/tree/main/Beginner/weather-api',
+    demo: 'weather-api-bnr2.onrender.com'
   },
   {
-    title: 'To-Do List API',
-    description: 'RESTful API for task management with advanced filtering and authentication.',
-    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=800',
-    tech: ['Node.js', 'Express.js', 'JWT'],
-    github: '#',
-    demo: '#'
-  },
-  {
-    title: 'Multimedia Arcade Game',
-    description: 'Interactive browser-based arcade game with multiple levels and sound effects.',
-    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800',
-    tech: ['HTML', 'CSS', 'JavaScript'],
-    github: '#',
-    demo: '#'
-  },
-  {
-    title: 'Notes App',
-    description: 'Google Keep inspired note-taking application with rich text editing.',
-    image: 'https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=800',
-    tech: ['React', 'Node.js', 'MongoDB'],
-    github: '#',
-    demo: '#'
+    title: 'Sitarabucks - Fullstack Cafe Website',
+    description: 'Dynamic PHP and MySQL-based online coffee shop simulation.',
+    image: 'sitarabucks.png',
+    tech: ['PHP', 'MySQL', 'HTML/CSS', 'javascript', 'tailwindcss'],
+    github: 'https://github.com/Shadab-2604/Sitarabucks-PHP',
+    demo: 'https://aquibk500.infinityfreeapp.com/Sitarabucks/index.php'
   }
 ];
+
 
 const Projects = () => {
   return (

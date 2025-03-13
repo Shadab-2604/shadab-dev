@@ -3,25 +3,53 @@ import { Calendar, Award } from 'lucide-react';
 
 const experiences = [
   {
-    title: 'Generative AI Intern',
-    company: 'TCR Innovation',
-    period: 'June 2023 - August 2023',
-    description: 'Worked on developing AI-powered solutions and implementing machine learning models for various applications.',
+    title: "Generative AI Intern",
+    company: "TCR Innovation",
+    period: "Oct 2024 - Dec 2024", // Extracted from resume
+    description: "Utilized Pandas for data preprocessing, optimization, and feature engineering to support AI model development.",
     achievements: [
-      'Developed an intelligent chatbot system',
-      'Implemented natural language processing features',
-      'Collaborated with cross-functional teams'
+      "Developed an intelligent chatbot system", // New achievement
+      "Implemented natural language processing features", // New achievement
+      "Collaborated with cross-functional teams" // New achievement
     ]
   },
   {
-    title: 'Hackathon Winner',
-    company: 'Tech Innovate 2023',
-    period: 'March 2023',
-    description: 'Led a team to victory in a 48-hour hackathon focused on creating innovative solutions for real-world problems.',
+    title: "Hackathon Winner",
+    company: "Tech Innovate 2023",
+    period: "March 2023", // New entry (not in resume)
+    description: "Led a team to victory in a 48-hour hackathon focused on creating innovative solutions for real-world problems.",
     achievements: [
-      'Built a full-stack application in 48 hours',
-      'Implemented real-time features',
-      'Won first place among 50+ teams'
+      "Built a full-stack application in 48 hours",
+      "Implemented real-time features",
+      "Won first place among 50+ teams"
+    ]
+  },
+  {
+    title: "Alegria Web-weaving Hackathon (1st Rank)",
+    company: "Alegria",
+    period: "", // No period in resume
+    description: "Developed 'Radio Rewind,' a retro music streaming website in 6 hours.",
+    achievements: [
+      "Showcased skills in web development, teamwork, and creative problem-solving"
+    ]
+  },
+  {
+    title: "Fastest Coder First | Hackathon",
+    company: "Microsoft",
+    period: "", // No period in resume
+    description: "Led a team of 3 to develop a functional command-line weather tool in Python.",
+    achievements: [
+      "Utilized weather API and demonstrated ability to work under pressure"
+    ]
+  },
+  {
+    title: "CodeBug 2K25 | 24-Hour Hackathon (1st Runner-Up)",
+    company: "Sahyog College Of IT and Management Studies",
+    period: "", // No period in resume (assumed "2025" from event name but left blank per instructions)
+    description: "Built WebRoom, a platform for study material sharing, project collaboration, and video calls.",
+    achievements: [
+      "Developed a responsive web app in 24 hours",
+      "Showcased full-stack development, teamwork, and problem-solving"
     ]
   }
 ];

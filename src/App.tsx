@@ -37,7 +37,7 @@ const App: React.FC = () => {
       <nav className="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 py-4">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <a href="#" className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
-            Shadab.dev
+            SHADAB.DEV
           </a>
 
           <div className="hidden md:flex items-center space-x-8">
