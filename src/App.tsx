@@ -35,65 +35,78 @@ const App: React.FC = () => {
     <div className={`min-h-screen ${darkMode ? "dark bg-gray-900" : "bg-gray-50"}`}>
       {/* Navigation */}
       <nav className="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 py-4">
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <a href="#" className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
-            SHADAB.DEV
-          </a>
-
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
-              >
-                {item}
-              </a>
-            ))}
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            >
-              {darkMode ? <Sun className="w-5 h-5 text-gray-300" /> : <Moon className="w-5 h-5 text-gray-600" />}
-            </button>
-          </div>
-
-          <div className="md:hidden flex items-center space-x-4">
-            <button
-              onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            >
-              {darkMode ? <Sun className="w-5 h-5 text-gray-300" /> : <Moon className="w-5 h-5 text-gray-600" />}
-            </button>
-            <button
-              onClick={() => setIsMenuOpen((prev) => !prev)}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-              ) : (
-                <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-900 border-t dark:border-gray-800">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item}
-              </a>
-            ))}
-          </div>
+  <div className="container mx-auto px-4 flex justify-between items-center">
+    <a href="#" className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+      SHADAB.DEV
+    </a>
+    
+    <div className="hidden md:flex items-center space-x-8">
+      {navItems.map((item) => (
+        <a
+          key={item}
+          href={`#${item.toLowerCase()}`}
+          className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+        >
+          {item}
+        </a>
+      ))}
+      <a
+        href="https://blog-iota-ten-88.vercel.app/"
+        className="text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+      >
+        Blogs
+      </a>
+      <button
+        onClick={toggleDarkMode}
+        className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      >
+        {darkMode ? <Sun className="w-5 h-5 text-gray-300" /> : <Moon className="w-5 h-5 text-gray-600" />}
+      </button>
+    </div>
+    
+    <div className="md:hidden flex items-center space-x-4">
+      <button
+        onClick={toggleDarkMode}
+        className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      >
+        {darkMode ? <Sun className="w-5 h-5 text-gray-300" /> : <Moon className="w-5 h-5 text-gray-600" />}
+      </button>
+      <button
+        onClick={() => setIsMenuOpen((prev) => !prev)}
+        className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      >
+        {isMenuOpen ? (
+          <X className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+        ) : (
+          <Menu className="w-6 h-6 text-gray-600 dark:text-gray-300" />
         )}
-      </nav>
+      </button>
+    </div>
+  </div>
+  
+  {/* Mobile Menu */}
+  {isMenuOpen && (
+    <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-900 border-t dark:border-gray-800">
+      {navItems.map((item) => (
+        <a
+          key={item}
+          href={`#${item.toLowerCase()}`}
+          className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+          onClick={() => setIsMenuOpen(false)}
+        >
+          {item}
+        </a>
+      ))}
+      <a
+        href="https://blog-iota-ten-88.vercel.app/"
+        className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+        onClick={() => setIsMenuOpen(false)}
+      >
+        Blogs
+      </a>
+    </div>
+  )}
+</nav>
 
       <main className="pt-16">
         <Hero darkMode={darkMode} />
