@@ -97,13 +97,15 @@ const App: React.FC = () => {
           {item}
         </a>
       ))}
-      <a
-        href="https://blog-iota-ten-88.vercel.app/"
-        className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
-        onClick={() => setIsMenuOpen(false)}
-      >
-        Blogs
-      </a>
+     <a
+  href="https://blog-iota-ten-88.vercel.app/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="block px-4 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+  onClick={() => setIsMenuOpen(false)}
+>
+  Blogs
+</a>
     </div>
   )}
 </nav>

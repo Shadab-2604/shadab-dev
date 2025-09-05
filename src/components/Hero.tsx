@@ -10,7 +10,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
     const cvUrl = "/ShaikhShadab.pdf";
     const link = document.createElement("a");
     link.href = cvUrl;
-    link.download = "Shadab_CV.pdf";
+    link.download = "Shaikh_Shadab_CV.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -31,15 +31,15 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
       {/* Floating Tech Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <Database
-          className="absolute top-1/4 left-10 w-16 h-16 text-gray-400 dark:text-gray-600 opacity-30 animate-float"
+          className="absolute top-1/4 left-10 w-16 h-16 text-blue-400 dark:text-blue-600 opacity-30 animate-float"
           strokeWidth={1}
         />
         <Server
-          className="absolute top-1/3 right-20 w-20 h-20 text-indigo-400 dark:text-indigo-600 opacity-20 animate-float delay-200"
+          className="absolute top-1/3 right-20 w-20 h-20 text-green-400 dark:text-green-600 opacity-20 animate-float delay-200"
           strokeWidth={1}
         />
         <Cloud
-          className="absolute bottom-20 left-1/4 w-24 h-24 text-sky-400 dark:text-sky-600 opacity-25 animate-float delay-300"
+          className="absolute bottom-20 left-1/4 w-24 h-24 text-purple-400 dark:text-purple-600 opacity-25 animate-float delay-300"
           strokeWidth={1}
         />
 
@@ -50,18 +50,19 @@ const Hero: React.FC<HeroProps> = ({ darkMode }) => {
 
         {/* Gradient Blobs */}
         <div className="absolute -top-20 -right-20 w-96 h-96 bg-radial-gradient from-indigo-400 to-transparent rounded-full filter blur-3xl opacity-10 dark:opacity-5" />
-        <div className="absolute -bottom-40 left-0 w-80 h-80 bg-radial-gradient from-sky-300 to-transparent rounded-full filter blur-3xl opacity-10 dark:opacity-5" />
+        <div className="absolute -bottom-40 left-0 w-80 h-80 bg-radial-gradient from-blue-300 to-transparent rounded-full filter blur-3xl opacity-10 dark:opacity-5" />
       </div>
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white">
-            Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">Shadab</span>
-            <br />
-            Backend Developer
+            Hi, I'm <span className="text-indigo-600 dark:text-indigo-400">Shaikh Shadab</span>
           </h1>
+          <h2 className="text-2xl md:text-3xl text-indigo-500 dark:text-indigo-400 mb-6">
+            Full-Stack MERN Developer
+          </h2>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
-            Crafting robust backend solutions and building full-stack applications with a focus on security and scalability.
+            Skilled in MongoDB, Express.js, React.js, and Node.js, building web apps, APIs, and backend systems with strong problem-solving and teamwork skills.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">

@@ -12,18 +12,10 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-            A software developer with expertise in Python, Java, C#, PHP, and 
-modern web technologies like HTML, CSS, JavaScript, and ReactJS. 
-Experienced in backend development, API creation, database 
-management, and cybersecurity. 
+              Full-Stack MERN Developer with experience building web applications, APIs, and backend systems. Hands-on experience in hackathons, internships, and projects with strong problem-solving and teamwork skills.
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-            Passionate about building scalable 
-applications and solving real-world problems through efficient coding 
-and system design. Proven track record in hackathons, demonstrating 
-the ability to work under pressure, collaborate effectively, and deliver 
-innovative solutions.
-            </p>
+            Completed BCA at Kavikulaguru Kalidas Sanskrit University with a GPA of 8.8/10. President of Student Council (2024-2025). Passionate about creating efficient, scalable solutions with modern technologies</p>
           </div>
 
           <div className="grid grid-cols-2 gap-6">
@@ -31,22 +23,22 @@ innovative solutions.
               {
                 icon: <Server className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />,
                 title: 'Backend Development',
-                description: 'Building robust and scalable server-side solutions'
+                description: 'Building robust server-side solutions'
               },
               {
                 icon: <Code2 className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />,
                 title: 'Full Stack Projects',
-                description: 'Creating end-to-end web applications'
+                description: 'MERN stack applications'
               },
               {
                 icon: <Shield className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />,
                 title: 'Cybersecurity',
-                description: 'Implementing secure coding practices'
+                description: 'Security best practices'
               },
               {
                 icon: <Database className="w-8 h-8 text-indigo-600 dark:text-indigo-400" />,
                 title: 'API Development',
-                description: 'Designing RESTful and efficient APIs'
+                description: 'RESTful API design'
               }
             ].map((item, index) => (
               <div

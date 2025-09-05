@@ -1,42 +1,25 @@
 import React from 'react';
 
-const skillCategories = [
-  {
-    title: 'Languages',
-    skills: [
-      { name: 'Python', icon: 'python.svg' },
-      { name: 'JavaScript', icon: 'javascript.svg' },
-      { name: 'HTML', icon: 'html.svg' },
-      { name: 'CSS', icon: 'css.svg' },
-      { name: 'SQL', icon: 'sql.svg' }
-    ]
-  },
-  {
-    title: 'Frameworks & Libraries',
-    skills: [
-      { name: 'Node.js', icon: 'nodejs.svg' },
-      { name: 'Express.js', icon: 'express.svg' },
-      { name: 'Pandas', icon: 'pandas.svg' }
-    ]
-  },
-  {
-    title: 'Tools & Technologies',
-    skills: [
-      { name: 'Git', icon: 'git.svg' },
-      { name: 'MongoDB', icon: 'mongodb.svg' },
-      { name: 'MySQL', icon: 'docker.svg' },
-      { name: 'PL/SQL', icon: 'docker.svg' }
-    ]
-  },
-  {
-    title: 'Other Skills',
-    skills: [
-      { name: 'API Design', icon: 'api.svg' }
-    ]
-  }
-];
-
 const Skills = () => {
+  const skillCategories = [
+    {
+      title: 'Frontend',
+      skills: ['React.js', 'Next.js', 'Tailwind CSS', 'HTML', 'JavaScript', 'TypeScript']
+    },
+    {
+      title: 'Backend',
+      skills: ['Node.js', 'Express.js', 'PHP', 'Python', 'C#', 'C/C++', 'RESTful APIs']
+    },
+    {
+      title: 'Databases',
+      skills: ['MongoDB', 'MySQL', 'PL/SQL']
+    },
+    {
+      title: 'Tools & Cloud',
+      skills: ['Git', 'GitHub', 'Pandas', 'MS Office', 'AWS (basic)', 'Azure (basic)']
+    }
+  ];
+
   return (
     <section id="skills" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
@@ -54,12 +37,11 @@ const Skills = () => {
                 {category.skills.map((skill, skillIndex) => (
                   <div
                     key={skillIndex}
-                    className="border border-white/20 bg-white/5 backdrop-blur-sm rounded-lg p-4 hover:border-indigo-500/50 transition-colors duration-300"
+                    className="border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 rounded-lg p-4 hover:border-indigo-500/50 transition-colors duration-300"
                   >
                     <div className="flex items-center space-x-3">
-                      {/* You'll need to add the actual icons here */}
                       <span className="text-gray-700 dark:text-gray-300">
-                        {skill.name}
+                        {skill}
                       </span>
                     </div>
                   </div>

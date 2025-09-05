@@ -3,43 +3,41 @@ import { Calendar, Award } from 'lucide-react';
 
 const experiences = [
   {
-    title: "Generative AI Intern",
-    company: "TCR Innovation",
-    period: "Oct 2024 - Dec 2024", // Extracted from resume
-    description: "Utilized Pandas for data preprocessing, optimization, and feature engineering to support AI model development.",
+    title: "GenAI, Data Science & ML Intern",
+    company: "TCR Innovation | Navi Mumbai",
+    period: "Oct 2024 - Dec 2024",
     achievements: [
-      "Developed an intelligent chatbot system", // New achievement
-      "Implemented natural language processing features", // New achievement
-      "Collaborated with cross-functional teams" // New achievement
-    ]
-  },
-
-  {
-    title: "Alegria Web-weaving Hackathon (1st Rank)",
-    company: "Alegria",
-    period: "", // No period in resume
-    description: "Developed 'Radio Rewind,' a retro music streaming website in 6 hours.",
-    achievements: [
-      "Showcased skills in web development, teamwork, and creative problem-solving"
+      "Built preprocessing pipelines with Pandas to improve data quality.",
+      "Applied feature engineering to optimize model performance.",
+      "Collaborated with a 3-member team on ML models and validation workflows."
     ]
   },
   {
-    title: "Fastest Coder First | Hackathon",
+    title: "Alegria Web-weaving Hackathon – 1st Place",
+    company: "Alegria | Panvel",
+    period: "Sep 2023",
+    achievements: [
+      "Developed Radio Rewind, a retro music streaming site, in just 6 hours.",
+      "Showcased web development, teamwork, and rapid problem-solving.",
+      "Achieved 1st rank among competing teams."
+    ]
+  },
+  {
+    title: "Fastest Coder First",
     company: "Microsoft",
-    period: "", // No period in resume
-    description: "Led a team of 3 to develop a functional command-line weather tool in Python.",
+    period: "",
     achievements: [
-      "Utilized weather API and demonstrated ability to work under pressure"
+      "Led a team of 3 to develop a functional command-line weather tool in Python.",
+      "Utilized weather API and demonstrated ability to work under pressure."
     ]
   },
   {
-    title: "CodeBug 2K25 | 24-Hour Hackathon (1st Runner-Up)",
-    company: "Sahyog College Of IT and Management Studies",
-    period: "", // No period in resume (assumed "2025" from event name but left blank per instructions)
-    description: "Built WebRoom, a platform for study material sharing, project collaboration, and video calls.",
+    title: "CodeBug 2K25 (1st Runner-Up)",
+    company: "Sahyog College",
+    period: "",
     achievements: [
-      "Developed a responsive web app in 24 hours",
-      "Showcased full-stack development, teamwork, and problem-solving"
+      "Built WebRoom, a platform for study material sharing, project collaboration, and video calls.",
+      "Developed a responsive web app in 24 hours showcasing full-stack development skills."
     ]
   }
 ];
@@ -71,20 +69,21 @@ const Experience = () => {
                   {exp.title}
                 </h3>
                 <div className="flex items-center text-gray-600 dark:text-gray-400 mb-4">
-                  <Calendar className="w-4 h-4 mr-2" />
                   <span className="mr-4">{exp.company}</span>
-                  <span>{exp.period}</span>
+                  {exp.period && (
+                    <>
+                      <Calendar className="w-4 h-4 mr-2" />
+                      <span>{exp.period}</span>
+                    </>
+                  )}
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  {exp.description}
-                </p>
                 <div className="space-y-2">
                   {exp.achievements.map((achievement, achievementIndex) => (
                     <div
                       key={achievementIndex}
                       className="flex items-start"
                     >
-                      <Award className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mr-2 mt-0.5" />
+                      <Award className="w-5 h-5 text-indigo-600 dark:text-indigo-400 mr-2 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-600 dark:text-gray-300">
                         {achievement}
                       </span>
