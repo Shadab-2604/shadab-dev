@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Github, ExternalLink } from 'lucide-react';
-import ComingSoon from './Comingsoon';
+import ComingSoon from './ComingSoon';
 
 const projects = [
   {
