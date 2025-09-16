@@ -16,7 +16,7 @@ const Skills = () => {
     },
     {
       title: 'Tools & Cloud',
-      skills: ['Git', 'GitHub', 'Pandas', 'MS Office', 'AWS (basic)', 'Azure (basic)']
+      skills: ['Git', 'GitHub', 'Pandas', 'MS Office','Google Workspace', 'AWS', 'Azure']
     }
   ];
 
