@@ -1,64 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Design Tokens ──────────────────────────────────────── */
 :root {
+  /* Light mode */
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --bg-primary: #F9FAFB;
+  --bg-secondary: #FFFFFF;
+  --border-color: #E5E7EB;
+
+  /* Accent (same both modes) */
+  --cyan-neon: #00E5FF;
+  --mint-neon: #7CFFB2;
+  --glow-cyan: rgba(0, 229, 255, 0.4);
+  --glow-cyan-sm: rgba(0, 229, 255, 0.15);
+
   scroll-behavior: smooth;
 }
 
 .dark {
   color-scheme: dark;
+  --text-primary: #E5E7EB;
+  --text-secondary: #9CA3AF;
+  --bg-primary: #0B0F19;
+  --bg-secondary: #111827;
+  --border-color: #1E2D3D;
 }
 
+/* ─── Base ───────────────────────────────────────────────── */
 @layer base {
   body {
-    @apply text-gray-900 dark:text-white;
+    @apply font-sans antialiased;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
+
+  ::selection {
+    background: rgba(0, 229, 255, 0.22);
+    color: #E5E7EB;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #0B0F19; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 229, 255, 0.25);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(0, 229, 255, 0.45); }
 }
 
+/* ─── Utilities ──────────────────────────────────────────── */
 @layer utilities {
-  .transition-transform {
-    transition-property: transform;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
+  /* Glassmorphism */
+  .glass {
+    background: rgba(13, 17, 23, 0.65);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  /* Text gradients */
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, #00E5FF 0%, #7CFFB2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effects */
+  .glow-text {
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.55), 0 0 40px rgba(0, 229, 255, 0.25);
+  }
+
+  /* Grid background */
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+
+  /* Buttons */
+  .btn-glow {
+    background: var(--cyan-neon);
+    color: #0B0F19;
+    font-weight: 600;
+    transition: all 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .btn-glow:hover {
+    box-shadow: 0 0 28px rgba(0, 229, 255, 0.55), 0 0 56px rgba(0, 229, 255, 0.2);
+    transform: translateY(-2px) scale(1.02);
+  }
+  .btn-glow:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: none;
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(0, 229, 255, 0.28);
+    color: #E5E7EB;
+    background: transparent;
+    transition: all 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .btn-outline:hover {
+    border-color: rgba(0, 229, 255, 0.65);
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.18);
+    transform: translateY(-2px) scale(1.02);
+  }
+  .btn-outline:active {
+    transform: translateY(0) scale(0.98);
   }
 }
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-@keyframes scroll {
-  0% { transform: translateY(0); }
-  30% { transform: translateY(40px); }
-}
-
-@keyframes scroll-wheel {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(28px); opacity: 0; }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.delay-200 {
-  animation-delay: 200ms;
-}
-
-.delay-300 {
-  animation-delay: 300ms;
-}
-
-.animate-scroll {
-  animation: scroll 20s linear infinite;
-}
-
-.animate-scroll-wheel {
-  animation: scroll-wheel 1.5s ease-out infinite;
-}
-
-.bg-radial-gradient {
-  background: radial-gradient(circle, var(--tw-gradient-from), var(--tw-gradient-to));
-}
-
