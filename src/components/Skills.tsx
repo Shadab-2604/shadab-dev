@@ -1,36 +1,35 @@
 import React from 'react';
 import {
   Shield, Zap, Code2, Server, Database, Globe, FileCode, Layers,
-  Terminal, Cpu, Network, GitBranch, Github, BarChart2,
-  FileText, Cloud, Braces, Table2, Palette,
+  Terminal, Network, GitBranch, Github, FileText, Cloud, Braces, Table2, Palette,
 } from 'lucide-react';
 
 type LucideIcon = React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
 
 const SKILL_ICONS: Record<string, LucideIcon> = {
-  'Cybersecurity': Shield,
-  'Pentesting': Zap,
+  Cybersecurity: Shield,
+  Pentesting: Zap,
   'React.js': Code2,
   'Next.js': Globe,
   'Tailwind CSS': Palette,
-  'HTML': FileCode,
-  'JavaScript': Zap,
-  'TypeScript': Braces,
+  HTML: FileCode,
+  JavaScript: Zap,
+  TypeScript: Braces,
   'Node.js': Server,
   'Express.js': Layers,
-  'MongoDB': Database,
-  'MySQL': Table2,
-  'SQLite': Table2,
-  'Git': GitBranch,
-  'GitHub': Github,
+  MongoDB: Database,
+  MySQL: Table2,
+  SQLite: Table2,
+  Git: GitBranch,
+  GitHub: Github,
   'Google Workspace': Globe,
-  'Python': Terminal,
-  'FastAPI': Layers,
-  'RAG': Code2,
-  'PySide6': FileText,
+  Python: Terminal,
+  FastAPI: Layers,
+  RAG: Code2,
+  PySide6: FileText,
   'Socket.IO': Network,
   'React Native': Code2,
-  'Ollama': Cloud,
+  Ollama: Cloud,
 };
 
 const CATEGORIES = [
@@ -58,39 +57,43 @@ const CATEGORIES = [
     title: 'Tools & Cloud',
     subtitle: 'dev ecosystem',
     skills: ['Python', 'PySide6', 'React Native', 'Google Workspace'],
+    spanFull: true,
   },
 ];
 
 const Skills = () => (
   <section id="skills" className="section bg-[var(--bg-secondary)] reveal">
-    <div className="container mx-auto px-4 max-w-4xl">
-      <div className="section-head mb-10">
+    <div className="container mx-auto px-4 max-w-5xl">
+      <div className="section-head">
         <span className="kicker">// tech stack</span>
-        <h2 className="mb-4">Skills & Expertise</h2>
+        <h2 className="mb-4">Skills &amp; Expertise</h2>
         <hr className="rule" />
       </div>
 
       <div className="grid md:grid-cols-2 gap-5">
-        {CATEGORIES.map((cat, ci) => (
-          <div key={ci} className="card p-6 rounded-lg">
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-px h-5 bg-[var(--text-tertiary)]" />
+        {CATEGORIES.map((cat) => (
+          <div
+            key={cat.title}
+            className={`card p-6 bg-[var(--bg-elevated)] ${cat.spanFull ? 'md:col-span-2' : ''}`}
+          >
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-0.5 h-6 rounded-full bg-[var(--text-primary)] opacity-70" />
               <div>
                 <h3 className="text-sm font-semibold text-[var(--text-primary)] leading-tight">
                   {cat.title}
                 </h3>
-                <p className="font-mono text-[10px] text-[var(--text-tertiary)] uppercase tracking-tighter">
+                <p className="font-mono text-[11px] text-[var(--text-tertiary)] uppercase tracking-wider mb-0">
                   {cat.subtitle}
                 </p>
               </div>
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {cat.skills.map((skill, si) => {
+              {cat.skills.map((skill) => {
                 const Icon = SKILL_ICONS[skill] ?? Code2;
                 return (
-                  <span key={si} className="tag">
-                    <Icon className="w-3 h-3 flex-shrink-0" />
+                  <span key={skill} className="tag">
+                    <Icon className="w-3.5 h-3.5 flex-shrink-0 text-[var(--text-tertiary)]" />
                     {skill}
                   </span>
                 );

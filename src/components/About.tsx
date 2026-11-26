@@ -1,4 +1,3 @@
-import React from 'react';
 import { Shield, Code2, Lock, Database } from 'lucide-react';
 
 const CARDS = [
@@ -28,22 +27,22 @@ const TAGS = ['Cybersecurity', 'MERN Stack', 'Penetration Testing', 'Quality Ass
 
 const About = () => (
   <section id="about" className="section bg-[var(--bg-secondary)] reveal">
-    <div className="container mx-auto px-4 max-w-4xl">
+    <div className="container mx-auto px-4 max-w-5xl">
       <div className="section-head">
         <span className="kicker">// who am i</span>
         <h2 className="mb-4">About Me</h2>
         <hr className="rule" />
       </div>
 
-      <div className="grid md:grid-cols-12 gap-12 items-start">
-        <div className="md:col-span-7">
-          <p className="text-lg text-[var(--text-secondary)] mb-6 leading-relaxed">
+      <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div className="lg:col-span-6">
+          <p className="text-base sm:text-lg text-[var(--text-secondary)] mb-5 leading-relaxed">
             Cybersecurity Engineer experienced in security operations, software
             testing, and quality assurance, with skills in vulnerability
             assessment and Full-Stack MERN development. Focused on application
             security, reliable systems, and secure software development.
           </p>
-          <p className="text-lg text-[var(--text-secondary)] mb-8 leading-relaxed">
+          <p className="text-base sm:text-lg text-[var(--text-secondary)] mb-8 leading-relaxed">
             Completed BCA at Sahyog College, Thane, India (2022–2025) with a GPA
             of 8.8/10. Currently serving as Head of the Testing Department,
             overseeing testing activities while contributing across cybersecurity,
@@ -59,17 +58,17 @@ const About = () => (
           </div>
         </div>
 
-        <div className="md:col-span-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {CARDS.map(({ Icon, title, description }, i) => (
-              <div key={i} className="card p-5">
-                <div className="flex items-center gap-2.5 mb-3">
-                  <Icon className="w-4 h-4 text-[var(--text-tertiary)]" />
-                  <h3 className="text-sm font-semibold text-[var(--text-primary)] leading-snug">
-                    {title}
-                  </h3>
+        <div className="lg:col-span-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {CARDS.map(({ Icon, title, description }) => (
+              <div key={title} className="card p-5 bg-[var(--bg-elevated)]">
+                <div className="w-8 h-8 rounded-lg border border-[var(--border)] bg-[var(--bg-tertiary)] flex items-center justify-center mb-3.5">
+                  <Icon className="w-4 h-4 text-[var(--text-primary)]" />
                 </div>
-                <p className="text-sm text-[var(--text-tertiary)] leading-relaxed">
+                <h3 className="text-sm font-semibold text-[var(--text-primary)] leading-snug mb-1.5">
+                  {title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[var(--text-tertiary)] leading-relaxed mb-0">
                   {description}
                 </p>
               </div>
