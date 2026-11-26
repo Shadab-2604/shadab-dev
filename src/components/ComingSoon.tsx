@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
 import { X, Clock, ArrowLeft } from 'lucide-react';
 
 interface ComingSoonProps {
@@ -24,81 +23,58 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-md"
       onClick={onClose}
     >
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9, y: 18 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.9 }}
-        transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="relative rounded-2xl border max-w-md w-full overflow-hidden"
-        style={{
-          background: 'rgba(13,17,23,0.96)',
-          backdropFilter: 'blur(24px)',
-          WebkitBackdropFilter: 'blur(24px)',
-          borderColor: 'rgba(0,229,255,0.2)',
-          boxShadow: '0 0 60px rgba(0,229,255,0.1), 0 20px 60px rgba(0,0,0,0.5)',
-        }}
+      <div
+        className="relative rounded-lg border border-[var(--border)] bg-[var(--bg-primary)] p-7 max-w-md w-full shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-full text-[#6B7280] hover:text-white hover:bg-white/10 transition-colors z-10"
+          className="absolute top-3 right-3 p-1.5 rounded text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
           aria-label="Close"
         >
           <X className="w-4 h-4" />
         </button>
 
-        {/* Body */}
-        <div className="p-8 text-center">
+        <div className="text-center">
           <div
-            className="mx-auto w-16 h-16 rounded-full flex items-center justify-center mb-5"
-            style={{
-              background: 'rgba(0,229,255,0.08)',
-              border: '1px solid rgba(0,229,255,0.2)',
-            }}
+            className="mx-auto w-10 h-10 rounded border border-[var(--border)] flex items-center justify-center mb-5"
           >
-            <Clock className="w-7 h-7 text-cyan-neon animate-spin-slow" />
+            <Clock className="w-5 h-5 text-[var(--text-tertiary)]" />
           </div>
 
-          <h2 className="text-2xl font-bold text-white mb-3">Coming Soon</h2>
-          <p className="text-sm text-[#9CA3AF] mb-7 leading-relaxed">
-            This project demo is currently under development. We're working hard
-            to bring you an amazing experience. Please check back later!
+          <h2 className="text-lg font-bold text-[var(--text-primary)] mb-2">
+            Coming Soon
+          </h2>
+          <p className="text-sm text-[var(--text-secondary)] mb-7 leading-relaxed">
+            This project demo is currently under development. Please check back later.
           </p>
 
           <button
             onClick={onClose}
-            className="btn-glow inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm"
+            className="btn inline-flex items-center gap-2"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-3 h-3" />
             Go Back
           </button>
         </div>
 
-        {/* Footer */}
-        <div
-          className="px-8 py-4 text-center border-t"
-          style={{
-            borderColor: 'rgba(0,229,255,0.1)',
-            background: 'rgba(0,229,255,0.03)',
-          }}
-        >
-          <p className="text-xs text-[#6B7280]">
+        <div className="px-7 py-4 text-center border-t border-[var(--border)]">
+          <p className="text-[11px] text-[var(--text-tertiary)]">
             In the meantime, check out the code on{' '}
             <a
               href="https://github.com/Shadab-2604"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-cyan-neon hover:underline"
+              className="underline underline-offset-2 hover:text-[var(--text-tertiary)] transition-colors"
             >
               GitHub
             </a>
           </p>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 };

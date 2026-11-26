@@ -26,29 +26,35 @@ const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const [scrolled, setScrolled] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Apply dark mode to <html>
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
     localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
-  // Navbar shrink on scroll
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Mouse-glow tracking
+  // Reveal-on-scroll via IntersectionObserver (CSS only, no animation library)
   useEffect(() => {
-    const onMove = (e: MouseEvent) => setMousePos({ x: e.clientX, y: e.clientY });
-    window.addEventListener('mousemove', onMove, { passive: true });
-    return () => window.removeEventListener('mousemove', onMove);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+    );
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
-  // Active-section highlight via IntersectionObserver
   useEffect(() => {
     const ids = ['hero', ...NAV_ITEMS.map((n) => n.toLowerCase())];
     const observers = ids.map((id) => {
@@ -64,45 +70,32 @@ const App: React.FC = () => {
     return () => observers.forEach((o) => o?.disconnect());
   }, []);
 
-  // Close mobile menu on nav click
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
 
   return (
     <div className={darkMode ? 'dark' : ''}>
-      <div className="relative min-h-screen bg-[var(--bg-primary)] transition-colors duration-300">
-
-        {/* Global mouse-glow (dark mode only, desktop) */}
-        {darkMode && (
-          <div
-            className="pointer-events-none fixed inset-0 z-20 hidden md:block transition-none"
-            style={{
-              background: `radial-gradient(480px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0,229,255,0.042), transparent 40%)`,
-            }}
-          />
-        )}
+      <div className="min-h-screen bg-[var(--bg-primary)]">
 
         {/* ── Navbar ─────────────────────────────────────────── */}
         <nav
-          className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          className={`fixed top-0 left-0 right-0 z-40 transition-colors duration-300 ${
             scrolled
-              ? 'py-3 bg-[var(--bg-primary)]/90 backdrop-blur-xl border-b border-[var(--border-color)]'
-              : 'py-5 bg-transparent'
+              ? 'py-3 bg-[var(--bg-primary)]/85 glass-nav border-b border-[var(--border)]'
+              : 'py-4 bg-transparent'
           }`}
         >
           <div className="container mx-auto px-4 flex justify-between items-center">
-            {/* Logo */}
             <a
               href="#"
               onClick={(e) => {
                 e.preventDefault();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="font-mono text-xl font-bold tracking-wider text-cyan-neon hover:glow-text transition-all duration-300"
+              className="font-sans text-lg font-semibold tracking-tight text-[var(--text-primary)]"
             >
               SHADAB<span className="text-[var(--text-secondary)]">.DEV</span>
             </a>
 
-            {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-7">
               {NAV_ITEMS.map((item) => {
                 const active = activeSection === item.toLowerCase();
@@ -110,18 +103,13 @@ const App: React.FC = () => {
                   <a
                     key={item}
                     href={`#${item.toLowerCase()}`}
-                    className={`relative text-sm font-medium transition-colors duration-200 group ${
+                    className={`text-sm font-medium transition-colors ${
                       active
-                        ? 'text-cyan-neon'
-                        : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                        ? 'text-[var(--text-primary)]'
+                        : 'text-[var(--text-tertiary)] hover:text-[var(--text-secondary)]'
                     }`}
                   >
                     {item}
-                    <span
-                      className={`absolute -bottom-0.5 left-0 h-px bg-cyan-neon transition-all duration-300 ${
-                        active ? 'w-full' : 'w-0 group-hover:w-full'
-                      }`}
-                    />
                   </a>
                 );
               })}
@@ -129,51 +117,48 @@ const App: React.FC = () => {
                 href="https://blog-iota-ten-88.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors group"
+                className="text-sm font-medium text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] transition-colors"
               >
-                Blogs
-                <span className="absolute -bottom-0.5 left-0 h-px bg-cyan-neon w-0 group-hover:w-full transition-all duration-300" />
+                Blog
               </a>
               <button
                 onClick={() => setDarkMode((p) => !p)}
                 aria-label="Toggle theme"
-                className="p-2 rounded-full border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-cyan-neon hover:border-cyan-neon/40 transition-all duration-200"
+                className="p-2 rounded-[10px] border border-[var(--border)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:border-[var(--border-hover)] transition-colors"
               >
                 {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
               </button>
             </div>
 
-            {/* Mobile controls */}
             <div className="md:hidden flex items-center gap-2">
               <button
                 onClick={() => setDarkMode((p) => !p)}
                 aria-label="Toggle theme"
-                className="p-2 rounded-full border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-cyan-neon transition-colors"
+                className="p-2 rounded-[10px] border border-[var(--border)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:border-[var(--border-hover)] transition-colors"
               >
                 {darkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
               </button>
               <button
                 onClick={() => setIsMenuOpen((p) => !p)}
                 aria-label="Toggle menu"
-                className="p-2 rounded-full border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-cyan-neon transition-colors"
+                className="p-2 rounded-[10px] border border-[var(--border)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:border-[var(--border-hover)] transition-colors"
               >
                 {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
 
-          {/* Mobile menu dropdown */}
           {isMenuOpen && (
-            <div className="md:hidden mt-2 mx-4 rounded-2xl border border-[var(--border-color)] bg-[var(--bg-secondary)]/95 backdrop-blur-2xl overflow-hidden shadow-card">
+            <div className="md:hidden mt-2 mx-4 rounded-[16px] border border-[var(--border)] bg-[var(--bg-elevated)] overflow-hidden shadow-card">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
                   onClick={closeMenu}
-                  className={`block px-5 py-3.5 text-sm font-medium border-b border-[var(--border-color)] last:border-0 transition-colors ${
+                  className={`block px-4 py-3 text-sm border-b border-[var(--border)] last:border-0 transition-colors ${
                     activeSection === item.toLowerCase()
-                      ? 'text-cyan-neon bg-cyan-neon/5'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--border-color)]/20'
+                      ? 'text-[var(--text-primary)] bg-[var(--bg-tertiary)]'
+                      : 'text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]'
                   }`}
                 >
                   {item}
@@ -184,15 +169,14 @@ const App: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMenu}
-                className="block px-5 py-3.5 text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--border-color)]/20 transition-colors"
+                className="block px-4 py-3 text-sm border-b border-[var(--border)] last:border-0 text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-tertiary)]"
               >
-                Blogs
+                Blog
               </a>
             </div>
           )}
         </nav>
 
-        {/* ── Sections ───────────────────────────────────────── */}
         <main>
           <Hero darkMode={darkMode} />
           <About />
@@ -203,14 +187,12 @@ const App: React.FC = () => {
         </main>
 
         {/* ── Footer ─────────────────────────────────────────── */}
-        <footer className="border-t border-[var(--border-color)] bg-[var(--bg-secondary)] py-10">
+        <footer className="border-t border-[var(--border)] bg-[var(--bg-secondary)] py-8 md:py-10">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <div>
-                <p className="font-mono text-sm font-bold text-cyan-neon mb-1">SHADAB.DEV</p>
-                <p className="text-xs text-[var(--text-secondary)]">
-                  © 2024 Shaikh Shadab. All rights reserved.
-                </p>
+                <p className="font-sans text-sm font-semibold text-[var(--text-primary)] tracking-tight">SHADAB.DEV</p>
+                <p className="text-[10px] text-[var(--text-tertiary)]">Shaikh Shadab.</p>
               </div>
               <div className="flex items-center gap-3">
                 {SOCIAL_LINKS.map(({ href, icon: Icon, label }) => (
@@ -220,10 +202,9 @@ const App: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    title={label}
-                    className="flex items-center justify-center w-9 h-9 rounded-xl border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-cyan-neon hover:border-cyan-neon/40 hover:shadow-glow-sm transition-all duration-300"
+                    className="flex items-center justify-center w-9 h-9 rounded-[12px] border border-[var(--border)] text-[var(--text-tertiary)] hover:text-[var(--text-primary)] hover:border-[var(--border-hover)] transition-colors"
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-3.5 h-3.5" />
                   </a>
                 ))}
               </div>

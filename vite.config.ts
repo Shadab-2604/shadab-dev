@@ -7,4 +7,30 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          // Vendor chunk for heavy libraries
+          if (id.includes('three')) {
+            return 'vendor-three';
+          }
+          if (id.includes('gsap')) {
+            return 'vendor-gsap';
+          }
+          if (id.includes('lucide-react')) {
+            return 'vendor-icons';
+          }
+          if (
+            id.includes('react') ||
+            id.includes('react-dom') ||
+            id.includes('@headlessui') ||
+            id.includes('emailjs')
+          ) {
+            return 'vendor-react';
+          }
+        },
+      },
+    },
+  },
 });
